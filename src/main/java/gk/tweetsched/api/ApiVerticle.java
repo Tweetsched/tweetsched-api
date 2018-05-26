@@ -28,7 +28,7 @@ import java.util.Map;
 public class ApiVerticle extends AbstractVerticle {
     private static final String CONTENT_TYPE = "content-type";
     private static final String APPLICATION_JSON = "application/json; charset=utf-8";
-    private static final String PORT_PROPERTY = "HTTP_PORT";
+    private static final String PORT_PROPERTY = "PORT";
     private static final int DEFAULT_PORT = 8080;
     private static final int OK = 200;
     private static final int CREATED = 201;
@@ -52,7 +52,7 @@ public class ApiVerticle extends AbstractVerticle {
                     vertx.createHttpServer()
                             .requestHandler(router::accept)
                             .listen(
-                                config.result().getInteger(PORT_PROPERTY, DEFAULT_PORT),
+                                config.result().getInteger(System.getenv(PORT_PROPERTY), DEFAULT_PORT),
                                 result -> {
                                     if (result.succeeded()) {
                                         fut.complete();
