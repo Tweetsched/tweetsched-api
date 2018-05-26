@@ -1,0 +1,17 @@
+# Exclude all files from target directory
+target/
+
+# Exclude all Idea related project files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Exclude all Eclipse related project files
+.settings/
+.project
+.classpath
+
+# Vertx related directories
+.vertx/
+file-uploads/
