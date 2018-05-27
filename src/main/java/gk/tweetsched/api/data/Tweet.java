@@ -12,19 +12,19 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Tweet {
     private static final AtomicInteger COUNTER = new AtomicInteger();
-    private final int id;
+    private final String id;
     private String message;
 
     public Tweet(String message) {
-        this.id = COUNTER.getAndIncrement();
+        this.id = String.valueOf(COUNTER.getAndIncrement());
         this.message = message;
     }
 
     public Tweet() {
-        this.id = COUNTER.getAndIncrement();
+        this.id = String.valueOf(COUNTER.getAndIncrement());
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

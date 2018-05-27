@@ -1,1 +1,0 @@
-web: java $JAVA_OPTS -Dhttp.port=$PORT -jar tweetsched-api/target/tweetsched-api-0.1-SNAPSHOT.jar
