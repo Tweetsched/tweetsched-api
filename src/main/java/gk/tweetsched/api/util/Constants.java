@@ -9,13 +9,11 @@ package gk.tweetsched.api.util;
  * @author Gleb Kosteiko.
  */
 public class Constants {
-    public static final String PROPERTY_FILE = "tweetsched-api.properties";
-    public static final String REDIS_URL_PROPERTY = "redis.url";
-    public static final String REDIS_PORT_PROPERTY = "redis.port";
-    public static final String REDIS_PASS_PROPERTY = "redis.password";
-    public static final String PORT_PROPERTY = "http.port";
+    public static final String REDIS_URL = "REDIS_URL";
+    public static final String REDIS_PORT = "redis.port";
+    public static final String REDIS_PASS = "redis.password";
 
-    public static final String DEFAULT_PORT = "8080";
+    public static final String PORT = "PORT";
 
     public static final String CONTENT_TYPE = "content-type";
     public static final String APPLICATION_JSON = "application/json; charset=utf-8";

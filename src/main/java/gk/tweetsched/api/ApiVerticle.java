@@ -2,7 +2,6 @@ package gk.tweetsched.api;
 
 import gk.tweetsched.api.data.Tweet;
 import gk.tweetsched.api.repository.TweetRepository;
-import gk.tweetsched.api.util.PropertiesManager;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
@@ -17,11 +16,6 @@ import io.vertx.ext.web.handler.StaticHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-import static gk.tweetsched.api.util.Constants.REDIS_URL_PROPERTY;
-import static gk.tweetsched.api.util.Constants.REDIS_PORT_PROPERTY;
-import static gk.tweetsched.api.util.Constants.REDIS_PASS_PROPERTY;
-import static gk.tweetsched.api.util.Constants.PORT_PROPERTY;
-import static gk.tweetsched.api.util.Constants.DEFAULT_PORT;
 import static gk.tweetsched.api.util.Constants.CONTENT_TYPE;
 import static gk.tweetsched.api.util.Constants.APPLICATION_JSON;
 import static gk.tweetsched.api.util.Constants.OK;
@@ -36,6 +30,10 @@ import static gk.tweetsched.api.util.Constants.HEALTHCHECK_PATH;
 import static gk.tweetsched.api.util.Constants.HEALTHCHECK_STATUS;
 import static gk.tweetsched.api.util.Constants.STATUS_PASS;
 import static gk.tweetsched.api.util.Constants.MESSAGE;
+import static gk.tweetsched.api.util.Constants.REDIS_URL;
+import static gk.tweetsched.api.util.Constants.REDIS_PORT;
+import static gk.tweetsched.api.util.Constants.REDIS_PASS;
+import static gk.tweetsched.api.util.Constants.PORT;
 
 /**
  * ApiVerticle class.
@@ -48,9 +46,9 @@ import static gk.tweetsched.api.util.Constants.MESSAGE;
 public class ApiVerticle extends AbstractVerticle {
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiVerticle.class);
     private TweetRepository tweetRepository = new TweetRepository(
-            System.getenv("REDIS_URL"),
-            Integer.valueOf(System.getenv("REDIS_PORT")),
-            System.getenv("REDIS_PASSWORD"));
+            System.getenv(REDIS_URL),
+            Integer.valueOf(System.getenv(REDIS_PORT)),
+            System.getenv(REDIS_PASS));
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
@@ -63,7 +61,7 @@ public class ApiVerticle extends AbstractVerticle {
         configureRoutes(router);
         vertx.createHttpServer()
                 .requestHandler(router::accept)
-                .listen(Integer.valueOf(System.getenv("PORT")));
+                .listen(Integer.valueOf(System.getenv(PORT)));
         LOGGER.info("API initialized");
     }
 
