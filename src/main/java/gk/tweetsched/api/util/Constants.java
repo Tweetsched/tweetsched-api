@@ -10,8 +10,8 @@ package gk.tweetsched.api.util;
  */
 public class Constants {
     public static final String REDIS_URL = "REDIS_URL";
-    public static final String REDIS_PORT = "redis.port";
-    public static final String REDIS_PASS = "redis.password";
+    public static final String REDIS_PORT = "REDIS_PORT";
+    public static final String REDIS_PASSWORD = "REDIS_PASSWORD";
 
     public static final String PORT = "PORT";
 

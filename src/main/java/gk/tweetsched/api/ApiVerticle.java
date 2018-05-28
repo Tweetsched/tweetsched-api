@@ -32,7 +32,7 @@ import static gk.tweetsched.api.util.Constants.STATUS_PASS;
 import static gk.tweetsched.api.util.Constants.MESSAGE;
 import static gk.tweetsched.api.util.Constants.REDIS_URL;
 import static gk.tweetsched.api.util.Constants.REDIS_PORT;
-import static gk.tweetsched.api.util.Constants.REDIS_PASS;
+import static gk.tweetsched.api.util.Constants.REDIS_PASSWORD;
 import static gk.tweetsched.api.util.Constants.PORT;
 
 /**
@@ -48,7 +48,7 @@ public class ApiVerticle extends AbstractVerticle {
     private TweetRepository tweetRepository = new TweetRepository(
             System.getenv(REDIS_URL),
             Integer.valueOf(System.getenv(REDIS_PORT)),
-            System.getenv(REDIS_PASS));
+            System.getenv(REDIS_PASSWORD));
 
     public static void main(String[] args) {
         Vertx vertx = Vertx.vertx();
