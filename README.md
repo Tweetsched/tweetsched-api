@@ -1,8 +1,8 @@
-##How to build:
+## How to build:
 
 mvn clean package
 
-##How to run:
+## How to run:
 
 java -jar target/tweetsched-api-0.1-SNAPSHOT.jar
 
