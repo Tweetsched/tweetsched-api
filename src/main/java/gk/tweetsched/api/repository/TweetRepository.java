@@ -17,11 +17,11 @@ import java.util.stream.Collectors;
  */
 public class TweetRepository {
     private static final String TWEETS_HASH = "tweets";
-    private static final String REDIS_URL = "127.0.0.1";
     private Jedis jedis;
 
-    public TweetRepository() {
-        this.jedis = new Jedis(REDIS_URL);
+    public TweetRepository(String redisUrl, int port, String password) {
+        this.jedis = new Jedis(redisUrl, port);
+        this.jedis.auth(password);
     }
 
     public List<Tweet> getAll() {
@@ -40,6 +40,6 @@ public class TweetRepository {
     }
 
     public void delete(String id) {
-        jedis.hdel(TWEETS_HASH,id);
+        jedis.hdel(TWEETS_HASH, id);
     }
 }
