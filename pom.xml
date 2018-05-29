@@ -10,6 +10,7 @@
     <properties>
         <vertx.version>3.5.1</vertx.version>
         <jedis-version>2.9.0</jedis-version>
+        <log4j-version>2.11.0</log4j-version>
         <testng-version>6.14.3</testng-version>
         <mockito-version>1.10.19</mockito-version>
         <compiler.plugin.version>3.7.0</compiler.plugin.version>
@@ -32,6 +33,16 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

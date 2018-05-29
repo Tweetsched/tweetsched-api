@@ -1,1 +1,1 @@
-web java -Dserver.port=$PORT $JAVA_OPTS -jar target/tweetsched-api-0.1-SNAPSHOT.jar
+web java -Dserver.port=$PORT $JAVA_OPTS -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.Log4j2LogDelegateFactory -jar target/tweetsched-api-0.1-SNAPSHOT.jar
