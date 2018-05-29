@@ -3,6 +3,10 @@ jdk: oraclejdk8
 
 script:
   mvn package
+  
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
 
 notifications:
   email:
