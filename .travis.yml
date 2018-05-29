@@ -3,7 +3,7 @@ jdk: oraclejdk8
 
 branches:
   only:
-  - master
+    - master
 
 script:
   mvn package
