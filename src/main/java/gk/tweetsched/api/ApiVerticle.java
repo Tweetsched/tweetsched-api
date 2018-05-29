@@ -47,7 +47,7 @@ public class ApiVerticle extends AbstractVerticle {
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiVerticle.class);
     private TweetRepository tweetRepository = new TweetRepository(
             System.getenv(REDIS_URL),
-            Integer.valueOf(System.getenv(REDIS_PORT)),
+            Integer.parseInt(System.getenv(REDIS_PORT)),
             System.getenv(REDIS_PASSWORD));
 
     public static void main(String[] args) {
@@ -61,7 +61,7 @@ public class ApiVerticle extends AbstractVerticle {
         configureRoutes(router);
         vertx.createHttpServer()
                 .requestHandler(router::accept)
-                .listen(Integer.valueOf(System.getenv(PORT)));
+                .listen(Integer.parseInt(System.getenv(PORT)));
         LOGGER.info("API initialized");
     }
 
