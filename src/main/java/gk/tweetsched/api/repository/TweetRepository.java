@@ -19,6 +19,8 @@ public class TweetRepository {
     private static final String TWEETS_HASH = "tweets";
     private Jedis jedis;
 
+    public TweetRepository() {}
+
     public TweetRepository(String redisUrl, int port, String password) {
         this.jedis = new Jedis(redisUrl, port);
         this.jedis.auth(password);
