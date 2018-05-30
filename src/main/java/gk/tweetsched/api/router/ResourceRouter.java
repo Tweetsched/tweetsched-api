@@ -43,6 +43,7 @@ public class ResourceRouter {
         router.delete(TWEETS_PATH + "/:id").handler(this::deleteOne);
         router.put(TWEETS_PATH + "/:id").handler(this::updateOne);
         router.get(HEALTHCHECK_PATH).handler(this::checkHealth);
+        router.get("/favicon.jpg").handler(this::getFavicon);
     }
 
     private void getAll(RoutingContext routingContext) {
@@ -106,5 +107,9 @@ public class ResourceRouter {
                 .putHeader(CONTENT_TYPE, APPLICATION_JSON)
                 .end(Json.encodePrettily(response));
         LOGGER.info("Healthcheck");
+    }
+
+    private void getFavicon(RoutingContext rc) {
+        rc.response().sendFile("assets/favicon.jpg").close();
     }
 }
