@@ -2,9 +2,15 @@ package gk.tweetsched.api.repository;
 
 import gk.tweetsched.api.data.Tweet;
 import io.vertx.core.json.Json;
+import io.vertx.core.logging.Logger;
+import io.vertx.core.logging.LoggerFactory;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Protocol;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 /**
@@ -16,32 +22,51 @@ import java.util.stream.Collectors;
  * @author Gleb Kosteiko.
  */
 public class TweetRepository {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TweetRepository.class);
     private static final String TWEETS_HASH = "tweets";
-    private Jedis jedis;
+    private JedisPool pool;
 
-    public TweetRepository() {}
+    public TweetRepository() {
+    }
 
     public TweetRepository(String redisUrl, int port, String password) {
-        this.jedis = new Jedis(redisUrl, port);
-        this.jedis.auth(password);
+        this.pool = new JedisPool(new JedisPoolConfig(), redisUrl, port, Protocol.DEFAULT_TIMEOUT, password);
     }
 
     public List<Tweet> getAll() {
-        return jedis.hgetAll(TWEETS_HASH).values()
-                .stream()
-                .map(tw -> Json.decodeValue(tw, Tweet.class))
-                .collect(Collectors.toList());
+        try (Jedis jedis = pool.getResource()) {
+            return jedis.hgetAll(TWEETS_HASH).values()
+                    .stream()
+                    .map(tw -> Json.decodeValue(tw, Tweet.class))
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            LOGGER.error(e);
+        }
+        return new ArrayList<>();
     }
 
     public Tweet get(String id) {
-        return Json.decodeValue(jedis.hget(TWEETS_HASH, id), Tweet.class);
+        try (Jedis jedis = pool.getResource()) {
+            return Json.decodeValue(jedis.hget(TWEETS_HASH, id), Tweet.class);
+        } catch (Exception e) {
+            LOGGER.error(e);
+        }
+        return null;
     }
 
     public void save(Tweet tweet) {
-        jedis.hset(TWEETS_HASH, tweet.getId(), Json.encodePrettily(tweet));
+        try (Jedis jedis = pool.getResource()) {
+            jedis.hset(TWEETS_HASH, tweet.getId(), Json.encodePrettily(tweet));
+        } catch (Exception e) {
+            LOGGER.error(e);
+        }
     }
 
     public void delete(String id) {
-        jedis.hdel(TWEETS_HASH, id);
+        try (Jedis jedis = pool.getResource()) {
+            jedis.hdel(TWEETS_HASH, id);
+        } catch (Exception e) {
+            LOGGER.error(e);
+        }
     }
 }
