@@ -20,3 +20,6 @@ REST API and Web UI for Scheduled Tweets service.
   - REDIS_PASSWORD
 - Run `java -Dvertx.logger-delegate-factory-class-name=io.vertx.core.logging.Log4j2LogDelegateFactory -jar target/tweetsched-api-0.1-SNAPSHOT.jar`
 - Open `http://localhost:8080/`
+
+## Logging and Monitoring:
+- [Healthcheck job](https://cron-job.org/en/members/jobs/details/?jobid=1255160)
