@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="full">
+    <test name="tweetsched-api-unit-tests">
+        <packages>
+            <package name="gk.tweetsched.api"/>
+            <package name="gk.tweetsched.api.repository"/>
+        </packages>
+    </test>
+</suite>
