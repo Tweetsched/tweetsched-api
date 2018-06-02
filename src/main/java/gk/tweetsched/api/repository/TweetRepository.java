@@ -35,7 +35,8 @@ public class TweetRepository {
 
     public List<Tweet> getAll() {
         try (Jedis jedis = pool.getResource()) {
-            return jedis.hgetAll(TWEETS_HASH).values()
+            return jedis.hgetAll(TWEETS_HASH)
+                    .values()
                     .stream()
                     .map(tw -> Json.decodeValue(tw, Tweet.class))
                     .collect(Collectors.toList());
