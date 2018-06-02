@@ -28,7 +28,7 @@ public class ApiVerticle extends AbstractVerticle {
     @Override
     public void start() {
         Router router = Router.router(vertx);
-        resourceRouter.configureRoutes(router);
+        resourceRouter.configureRoutes(router, vertx);
         vertx.createHttpServer()
                 .requestHandler(router::accept)
                 .listen(Integer.parseInt(System.getenv(PORT)));

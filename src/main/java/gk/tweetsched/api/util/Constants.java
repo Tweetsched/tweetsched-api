@@ -22,14 +22,23 @@ public class Constants {
     public static final int CREATED = 201;
     public static final int NO_CONTENT = 204;
     public static final int NOT_FOUND = 404;
+    public static final int FOUND = 302;
 
     public static final String ROOT_PATH = "/";
+    public static final String ASSETS = "assets";
     public static final String ASSETS_PATH = "/assets";
     public static final String TWEETS_PATH = "/api/tweets";
     public static final String HEALTHCHECK_PATH = "/api/healthcheck";
+    public static final String LOGIN = "/login";
+    public static final String LOGIN_AUTH = "/login-auth";
+    public static final String LOGOUT = "/logout";
+    public static final String MAIN_PAGE = "/index.html";
+    public static final String LOGIN_PAGE = "/login.html";
+    public static final String FAVICON = "/favicon.jpg";
 
     public static final String HEALTHCHECK_STATUS = "status";
     public static final String STATUS_PASS = "pass";
+    public static final String LOCATION = "Location";
 
     public static final String ID = "id";
     public static final String MESSAGE = "message";
