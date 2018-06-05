@@ -134,6 +134,9 @@
             }
         })
     }
+    function countChars(element) {
+        $("#charcount").text(element.value.length);
+    }
 </script>
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="dialog">
@@ -146,7 +149,8 @@
                 <form>
                     <div class="form-group">
                         <label for="tweet-message" class="control-label">Message:</label>
-                        <textarea class="form-control" id="tweet-message"></textarea>
+                        <textarea class="form-control" id="tweet-message" onkeyup="countChars(this);" onkeydown="countChars(this);" onmouseout="countChars(this);"></textarea>
+                        <span id="charcount">0</span> characters entered.
                     </div>
                 </form>
             </div>
