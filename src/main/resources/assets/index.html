@@ -58,12 +58,15 @@
     $(function () {
         load();
         initModal();
+        initListeners();
     });
+    
     function create(message) {
         $.post("/api/tweets", JSON.stringify({message: message}), function () {
             load();
         }, "json");
     }
+    
     function remove(id) {
         $.ajax({
             method: "DELETE",
@@ -72,6 +75,7 @@
             load();
         });
     }
+    
     function update(id, message) {
         $.ajax({
             method: "PUT",
@@ -81,6 +85,7 @@
             load();
         });
     }
+    
     function load() {
         $("#content").children().remove();
         $.getJSON("/api/tweets", function (data) {
@@ -103,12 +108,14 @@
             initCallbacks();
         });
     }
+    
     function initCallbacks() {
         $(".tweet-delete").unbind().click(function() {
             var id = $(this).data("id");
             remove(id);
         });
     }
+    
     function initModal() {
         $("#tweetModal").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -132,11 +139,13 @@
                     $('#tweetModal').modal('toggle');
                 });
             }
-        });
-
+        })
+    }
+    
+    function initListeners(){
         $('#tweetMessage').on('keyup keydown change input paste', function(e) {
             $("#charCount").text(this.value.length);
-        });
+        })
     }
 </script>
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog">
