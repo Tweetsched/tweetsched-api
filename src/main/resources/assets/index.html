@@ -126,16 +126,16 @@
             var modal = $(this);
             if (action === "add") {
                 modal.find('.modal-message').text("Add a new tweet");
-                modal.find('#tweet-message').val("");
+                modal.find('#tweetMessage').val("");
                 tweetAction.click(function () {
-                    create($("#tweet-message").val());
+                    create($("#tweetMessage").val());
                     $('#tweetModal').modal('toggle');
                 });
             } else {
                 modal.find('.modal-message').text("Edit the tweet");
-                modal.find('#tweet-message').val(button.data("message"));
+                modal.find('#tweetMessage').val(button.data("message"));
                 tweetAction.click(function () {
-                    update(id, $("#tweet-message").val());
+                    update(id, $("#tweetMessage").val());
                     $('#tweetModal').modal('toggle');
                 });
             }
