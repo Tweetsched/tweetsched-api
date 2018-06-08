@@ -138,6 +138,8 @@
             } else {
                 modal.find('.modal-message').text("Edit the tweet");
                 modal.find('#tweetMessage').val(button.data("message"));
+                $('#tweetMessage').focus();
+                $("#charCount").text(button.data("message").length);
                 tweetAction.click(function () {
                     update(id, $("#tweetMessage").val());
                     $('#tweetModal').modal('toggle');
