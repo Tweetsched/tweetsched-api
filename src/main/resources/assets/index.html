@@ -106,7 +106,7 @@
                     "</tr>").appendTo("#content");
             });
             initCallbacks();
-        }).fail(function(jqXHR) {
+        }).success(function(jqXHR) {
             if (jqXHR.status == 302) {
                 window.location.replace("/login");
             }
