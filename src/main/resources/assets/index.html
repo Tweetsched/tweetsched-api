@@ -134,7 +134,7 @@
             }
         });
 
-        $('#tweetMessage').on('keyup keydown change paste', function(e) {
+        $('#tweetMessage').on('keyup keydown change input paste', function(e) {
             $("#charCount").text(this.value.length);
         });
     }
