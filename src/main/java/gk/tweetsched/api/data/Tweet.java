@@ -1,7 +1,6 @@
 package gk.tweetsched.api.data;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
+import java.util.UUID;
 /**
  * Tweet class.
  * <p>
@@ -11,17 +10,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Gleb Kosteiko.
  */
 public class Tweet {
-    private static final AtomicInteger COUNTER = new AtomicInteger();
     private final String id;
     private String message;
 
     public Tweet(String message) {
-        this.id = String.valueOf(COUNTER.getAndIncrement());
+        this.id = String.valueOf(UUID.randomUUID());
         this.message = message;
     }
 
     public Tweet() {
-        this.id = String.valueOf(COUNTER.getAndIncrement());
+        this.id = String.valueOf(UUID.randomUUID());
     }
 
     public String getId() {

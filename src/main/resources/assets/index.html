@@ -41,7 +41,6 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>Tweet message</th>
                         <th>Actions</th>
                     </tr>
@@ -90,7 +89,7 @@
         $("#content").children().remove();
         $.getJSON("/api/tweets", function (data) {
             $.each(data, function (key, val) {
-                $("<tr><td>" + val.id + "</td><td>" + val.message + "</td><td>" +
+                $("<tr><td>" + val.message + "</td><td>" +
                     "<button data-action='edit' class='btn btn-primary btn-sm tweet-edit' " +
                     "data-toggle='modal' " +
                     "data-target='#tweetModal' " +
