@@ -132,10 +132,11 @@
                     $('#tweetModal').modal('toggle');
                 });
             }
-        })
-    }
-    function countChars(element) {
-        $("#charcount").text(element.value.length);
+        });
+
+        $('#tweetMessage').on('keyup keydown change paste', function(e) {
+            $("#charCount").text(this.value.length);
+        });
     }
 </script>
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog">
@@ -148,9 +149,9 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="tweet-message" class="control-label">Message:</label>
-                        <textarea class="form-control" id="tweet-message" onkeyup="countChars(this);" onkeydown="countChars(this);" onmouseout="countChars(this);"></textarea>
-                        <span id="charcount">0</span> characters entered.
+                        <label for="tweetMessage" class="control-label">Message:</label>
+                        <textarea class="form-control" id="tweetMessage"></textarea>
+                        <span id="charCount">0</span> characters entered
                     </div>
                 </form>
             </div>
