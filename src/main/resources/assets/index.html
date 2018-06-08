@@ -58,13 +58,16 @@
     $(function () {
         load();
         initModal();
+		initListeners();
     });
-    function create(message) {
+    
+	function create(message) {
         $.post("/api/tweets", JSON.stringify({message: message}), function () {
             load();
         }, "json");
     }
-    function remove(id) {
+    
+	function remove(id) {
         $.ajax({
             method: "DELETE",
             url: "/api/tweets/" + id
@@ -72,7 +75,8 @@
             load();
         });
     }
-    function update(id, message) {
+    
+	function update(id, message) {
         $.ajax({
             method: "PUT",
             url: "/api/tweets/" + id,
@@ -81,7 +85,8 @@
             load();
         });
     }
-    function load() {
+    
+	function load() {
         $("#content").children().remove();
         $.getJSON("/api/tweets", function (data) {
             $.each(data, function (key, val) {
@@ -103,13 +108,15 @@
             initCallbacks();
         });
     }
-    function initCallbacks() {
+    
+	function initCallbacks() {
         $(".tweet-delete").unbind().click(function() {
             var id = $(this).data("id");
             remove(id);
         });
     }
-    function initModal() {
+    
+	function initModal() {
         $("#tweetModal").on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
             var action = button.data('action');
@@ -132,11 +139,13 @@
                     $('#tweetModal').modal('toggle');
                 });
             }
-        });
-
-        $('#tweetMessage').on('keyup keydown change input paste', function(e) {
+        })
+    }
+    
+	function initListeners(){
+	    $('#tweetMessage').on('keyup keydown change input paste', function(e) {
             $("#charCount").text(this.value.length);
-        });
+        })
     }
 </script>
 <div class="modal fade" id="tweetModal" tabindex="-1" role="dialog">
