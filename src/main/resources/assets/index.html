@@ -106,10 +106,6 @@
                     "</tr>").appendTo("#content");
             });
             initCallbacks();
-        }).success(function(jqXHR) {
-            if (jqXHR.status == 302) {
-                window.location.replace("/login");
-            }
         });
     }
     
@@ -138,7 +134,6 @@
             } else {
                 modal.find('.modal-message').text("Edit the tweet");
                 modal.find('#tweetMessage').val(button.data("message"));
-                $('#tweetMessage').focus();
                 $("#charCount").text(button.data("message").length);
                 tweetAction.click(function () {
                     update(id, $("#tweetMessage").val());
@@ -165,7 +160,7 @@
                 <form>
                     <div class="form-group">
                         <label for="tweetMessage" class="control-label">Message:</label>
-                        <textarea class="form-control" id="tweetMessage"></textarea>
+                        <textarea class="form-control" id="tweetMessage" rows="4"></textarea>
                         <span id="charCount">0</span> characters entered
                     </div>
                 </form>
