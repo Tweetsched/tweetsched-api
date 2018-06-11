@@ -105,6 +105,10 @@
                     "</tr>").appendTo("#content");
             });
             initCallbacks();
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            if(textStatus == "parsererror") {
+                window.location.replace("/login");
+            }
         });
     }
     
