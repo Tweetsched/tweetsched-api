@@ -8,6 +8,7 @@
     <version>0.1-SNAPSHOT</version>
 
     <properties>
+        <dto-version>1.0.21</dto-version>
         <vertx.version>3.5.1</vertx.version>
         <jedis-version>2.9.0</jedis-version>
         <log4j-version>2.11.0</log4j-version>
@@ -19,6 +20,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.Tweetsched</groupId>
+            <artifactId>tweetsched-dto</artifactId>
+            <version>${dto-version}</version>
+        </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
@@ -100,4 +106,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>

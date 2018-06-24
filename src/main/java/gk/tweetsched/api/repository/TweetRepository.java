@@ -1,6 +1,6 @@
 package gk.tweetsched.api.repository;
 
-import gk.tweetsched.api.data.Tweet;
+import gk.tweetsched.dto.Tweet;
 import io.vertx.core.json.Json;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
