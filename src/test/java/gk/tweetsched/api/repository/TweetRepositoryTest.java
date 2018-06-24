@@ -1,6 +1,6 @@
 package gk.tweetsched.api.repository;
 
-import gk.tweetsched.api.data.Tweet;
+import gk.tweetsched.dto.Tweet;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.testng.annotations.Test;

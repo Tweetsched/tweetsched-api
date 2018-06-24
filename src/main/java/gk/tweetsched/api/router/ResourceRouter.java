@@ -1,7 +1,7 @@
 package gk.tweetsched.api.router;
 
-import gk.tweetsched.api.data.Tweet;
 import gk.tweetsched.api.repository.TweetRepository;
+import gk.tweetsched.dto.Tweet;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
@@ -25,6 +25,7 @@ import io.vertx.ext.web.sstore.LocalSessionStore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import static gk.tweetsched.api.util.Constants.REDIS_URL;
 import static gk.tweetsched.api.util.Constants.REDIS_PORT;
@@ -114,6 +115,7 @@ public class ResourceRouter {
 
     private void addOne(RoutingContext context) {
         Tweet tweet = context.getBodyAsJson().mapTo(Tweet.class);
+        tweet.setId(String.valueOf(UUID.randomUUID()));
         tweetRepository.save(tweet);
         context.response()
                 .setStatusCode(CREATED)
