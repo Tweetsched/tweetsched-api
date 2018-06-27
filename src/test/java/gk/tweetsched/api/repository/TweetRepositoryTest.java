@@ -12,6 +12,7 @@ import redis.clients.jedis.JedisPool;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -76,7 +77,9 @@ public class TweetRepositoryTest {
     public void testSave() {
         when(pool.getResource()).thenReturn(jedis);
 
-        Tweet tweet2 = new Tweet(TWEET_MESSAGE2);
+        Tweet tweet2 = new Tweet();
+        tweet2.setId(String.valueOf(UUID.randomUUID()));
+        tweet2.setMessage(TWEET_MESSAGE2);
         repo.save(tweet2);
 
         verify(pool).getResource();
