@@ -1,5 +1,6 @@
 package gk.tweetsched.api.repository;
 
+import com.fasterxml.jackson.module.kotlin.KotlinModule;
 import gk.tweetsched.dto.Tweet;
 import io.vertx.core.json.Json;
 import io.vertx.core.logging.Logger;
@@ -27,10 +28,17 @@ public class TweetRepository {
     private JedisPool pool;
 
     public TweetRepository() {
+        init();
     }
 
     public TweetRepository(String redisUrl, int port, String password) {
+        init();
         this.pool = new JedisPool(new JedisPoolConfig(), redisUrl, port, Protocol.DEFAULT_TIMEOUT, password);
+    }
+
+    private void init() {
+        Json.mapper.registerModule(new KotlinModule());
+        Json.prettyMapper.registerModule(new KotlinModule());
     }
 
     public List<Tweet> getAll() {
