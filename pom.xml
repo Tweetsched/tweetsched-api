@@ -8,9 +8,10 @@
     <version>0.1-SNAPSHOT</version>
 
     <properties>
-        <dto-version>1.0.21</dto-version>
+        <tweetsched-dto-version>1.33</tweetsched-dto-version>
         <vertx.version>3.5.1</vertx.version>
         <jedis-version>2.9.0</jedis-version>
+        <jackson-module-kotlin-version>2.9.4.1</jackson-module-kotlin-version>
         <log4j-version>2.11.0</log4j-version>
         <testng-version>6.14.3</testng-version>
         <mockito-version>1.10.19</mockito-version>
@@ -23,7 +24,7 @@
         <dependency>
             <groupId>com.github.Tweetsched</groupId>
             <artifactId>tweetsched-dto</artifactId>
-            <version>${dto-version}</version>
+            <version>${tweetsched-dto-version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
@@ -44,6 +45,11 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <version>${jackson-module-kotlin-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
