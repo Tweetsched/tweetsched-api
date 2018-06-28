@@ -28,6 +28,11 @@ deploy:
     on:
       branch: master
       repo: Tweetsched/tweetsched-api
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    on:
+      branch: master
+      repo: Tweetsched/tweetsched-api
 
 notifications:
   email:
