@@ -4,13 +4,36 @@ jdk: oraclejdk8
 branches:
   only:
     - master
+    - release
 
-script:
-  mvn package
+before_install: mvn package
+
+before_deploy:
+  - export TRAVIS_TAG="1.$TRAVIS_BUILD_NUMBER"
+  - echo "$TRAVIS_TAG" "$TRAVIS_COMMIT"
+  - git config --local user.name "$USER_NAME"
+  - git config --local user.email "$USER_EMAIL"
+  - git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
   
 deploy:
-  provider: heroku
-  api_key: $HEROKU_API_KEY
+  - provider: heroku
+    api_key: $HEROKU_API_KEY
+    on:
+      branch: release
+      repo: Tweetsched/tweetsched-api
+  - provider: releases
+    tag_name: $TRAVIS_TAG
+    target_commitish: $TRAVIS_COMMIT
+    name: $TRAVIS_TAG
+    overwrite: true
+    skip_cleanup: true
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file:
+      - target/tweetsched-api-0.1-SNAPSHOT.jar
+    on:
+      branch: release
+      repo: Tweetsched/tweetsched-api
 
 notifications:
   email:
