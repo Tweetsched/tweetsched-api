@@ -4,7 +4,6 @@ jdk: oraclejdk8
 branches:
   only:
     - master
-    - release
 
 before_install: mvn package
 
@@ -19,7 +18,7 @@ deploy:
   - provider: heroku
     api_key: $HEROKU_API_KEY
     on:
-      branch: release
+      branch: master
       repo: Tweetsched/tweetsched-api
   - provider: releases
     tag_name: $TRAVIS_TAG
@@ -32,7 +31,7 @@ deploy:
     file:
       - target/tweetsched-api-0.1-SNAPSHOT.jar
     on:
-      branch: release
+      branch: master
       repo: Tweetsched/tweetsched-api
 
 notifications:
