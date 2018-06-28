@@ -15,11 +15,6 @@ before_deploy:
   - git tag "$TRAVIS_TAG" "$TRAVIS_COMMIT"
   
 deploy:
-  - provider: heroku
-    api_key: $HEROKU_API_KEY
-    on:
-      branch: master
-      repo: Tweetsched/tweetsched-api
   - provider: releases
     tag_name: $TRAVIS_TAG
     target_commitish: $TRAVIS_COMMIT
