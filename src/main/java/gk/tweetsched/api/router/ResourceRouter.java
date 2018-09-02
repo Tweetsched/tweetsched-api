@@ -116,6 +116,7 @@ public class ResourceRouter {
     private void addOne(RoutingContext context) {
         Tweet tweet = context.getBodyAsJson().mapTo(Tweet.class);
         tweet.setId(String.valueOf(UUID.randomUUID()));
+        tweet.setProfileId("1"); //TODO remove hardcoded profile ID
         tweetRepository.save(tweet);
         context.response()
                 .setStatusCode(CREATED)

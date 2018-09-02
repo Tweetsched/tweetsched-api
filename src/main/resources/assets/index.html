@@ -61,7 +61,7 @@
     });
     
     function create(message) {
-        $.post("/api/tweets", JSON.stringify({message: message}), function () {
+        $.post("/api/tweets", JSON.stringify({message: message, requiredServices: ["LINKEDIN", "TWITTER"]}), function () {
             load();
         }, "json");
     }
@@ -79,7 +79,7 @@
         $.ajax({
             method: "PUT",
             url: "/api/tweets/" + id,
-            data:  JSON.stringify({message: message})
+            data:  JSON.stringify({message: message, requiredServices: ["LINKEDIN", "TWITTER"]})
         }).done(function () {
             load();
         });
